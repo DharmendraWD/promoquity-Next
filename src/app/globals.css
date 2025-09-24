@@ -19,8 +19,177 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* .bg-gradient-hero {
+background: linear-gradient(to bottom, #228B22, black);
 }
+*/
+.bottomHandGrdientDiv{
+  /* background: linear-gradient(0deg, #000 17.55%, rgba(0, 0, 0, 0.00) 88.6%); */
+  /* background: linear-gradient(2deg, #2f3237 17.55%, rgb(129 0 0 / 0%) 88.6%); */
+} 
+
+.carousel-container {
+  padding: 40px 0;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.carousel-card {
+  /* background: #ffffff; */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  max-width: 90%;
+  margin: auto;
+}
+
+.carousel-card:hover {
+  transform: translateY(-10px);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.carousel-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.carousel-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+
+body{
+  margin: 0;
+  /* min-height: 200vh; Or any height to allow scrolling */
+/* background: linear-gradient(to bottom, #0d4f1e 0%,  #000000 1000px,  #000000 100% ); */
+/* background: linear-gradient(0deg, rgba(51, 51, 51, 0.00) -1.46%, #002366 74.04%, #333 179.35%); */
+ background: linear-gradient(to bottom, #002366, #333333);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-attachment: scroll;
+padding: 0;
+position: relative;
+}
+
+/* .greenBlackFadedBg{
+  background: linear-gradient(to bottom, #0d4f1e 0%, #000000 90%,  #000000 100% );
+} */
+ .bg_transparent{
+  background: rgba(255, 255, 255, 0.06);
+ }
+
+
+ .animated-div {
+  transition: all 0.5s ease;
+}
+
+/* When scroll is more than 200px */
+.animated-div.blured {
+/* background-color: rgba(128, 128, 128, 0.5); */
+backdrop-filter: blur(14px);
+}
+
+/* When scroll is less than 200px */
+.animated-div.unblur {
+
+}
+/* Applies to all scrollable elements */
+.scrollbar-thin {
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #8888889e transparent;  /* Firefox */
+}
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 3px;     /* Thin width */
+  height: 3px;    /* For horizontal scroll */
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #88888898;    /* Scroll thumb color */
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;   /* Track background */
+}
+
+.twoLinePara {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+.teamSuppImageParent{
+/* perspective: 200px; */
+}
+.teamSuppImage{
+      /* transform: rotateX(20deg); */
+}
+.allCards{
+  transition: .3s ease-in-out;
+
+}
+.allCards:hover{
+  transform: scale(1.03);
+  background-color: #26262652;
+}
+
+.truncate-two-words {
+  width: 10ch; /* Approx width for 2 short words */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.justifyItemsCenter{
+  justify-items: center;
+}
+
+/* table  */
+ .table-container {
+      max-height: 300px; /* Adjust height as needed */
+      overflow-y: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    thead tr th{
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+/* table  */
