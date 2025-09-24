@@ -81,7 +81,13 @@ body{
   /* min-height: 200vh; Or any height to allow scrolling */
 /* background: linear-gradient(to bottom, #0d4f1e 0%,  #000000 1000px,  #000000 100% ); */
 /* background: linear-gradient(0deg, rgba(51, 51, 51, 0.00) -1.46%, #002366 74.04%, #333 179.35%); */
- background: linear-gradient(to bottom, #002366, #333333);
+ /* background: linear-gradient(to bottom, #002366, #333333); */
+ background: linear-gradient(
+  to bottom,
+  #002366 0%,       /* Start with blue */
+  #002366 80%,      /* Hold blue until 80% */
+  #333333 100%      /* Transition to dark gray */
+);
   background-repeat: no-repeat;
   min-height: 100vh;
   background-attachment: scroll;
