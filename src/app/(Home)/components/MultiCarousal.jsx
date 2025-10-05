@@ -11,6 +11,8 @@ import axios from 'axios';
 import noImage from '../../../../public/img/noImage.png'
 import noImg from '../../../../public/img/noImage.png'
 
+
+
 // /CompanyProfile/GetPagedCompanyProfileList?pageIndex=${skip}&pageSize=${limit}
 
 
@@ -110,9 +112,10 @@ let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
           {/* Carousel Content */}
           <div className="flex justify-center md:justify-start">
             {getVisibleItems().map((item, index) => (
-              <div
+              <Link
+                href={`/promoshare/${item?.id}`}
                 key={index}
-                className="flex-shrink-0 p-2"
+                className="flex-shrink-0 p-2 hover:bg-[#2222225e] transition-transform duration-300"
                 style={{ width: `${100 / itemsToShow}%` }}
               >
                 <div className=" rounded-[20px] overflow-hidden ">
@@ -126,7 +129,7 @@ let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
                       {item?.remarks1}
                     </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
        

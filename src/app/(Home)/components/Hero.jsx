@@ -5,11 +5,19 @@ import HeadingXL from '../../../components/utilities/HeadingXL';
 import Para from '../../../components/utilities/Para';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import MultiCarousel from './MultiCarousal';
+import LowTicket from './LowTicket';
+import TeamSupport from './TeamSupport';
+import FAQ from '@/components/utilities/faq/FAQ';
+import FirstThreeBlogs from '@/components/utilities/blogs/FirstThreeBlogs';
+import AboveFooter from '@/components/utilities/footer/AboveFooter';
+import Footer from '@/components/utilities/footer/Footer';
+import ProcessFlow from '@/components/utilities/cards/ProcessFlow';
 
 export default async function HeroSection() {
 const response = await fetch(`${process.env.BASE_API}/HomeContent/GetPagedHomeContentList?pageIndex=1&pageSize=10`, );
   if (!response.ok) {
+    return null;
     throw new Error('Failed to fetch data');
   }
 
@@ -25,6 +33,7 @@ const BASE_CONTENT = process.env.BASE_CONTENT
   
 
   return (
+    <>
     <div className='hero-section'>
       <div className="relative z-[8] mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mx-auto mt-[110px]">
@@ -82,6 +91,14 @@ const BASE_CONTENT = process.env.BASE_CONTENT
       </div>
       </div>
     </div>
+     <MultiCarousel />
+          <LowTicket />
+          <TeamSupport />
+          <FAQ />
+          <FirstThreeBlogs />
+          <ProcessFlow></ProcessFlow>
+          <AboveFooter my="100px" />
+          </>
   );
 };
 

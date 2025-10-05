@@ -18,6 +18,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'www.taskperfect.somee.com',
       },
+      {
+        protocol: 'http',
+        hostname: '3.27.120.54',
+      },
     ],
   },
 };

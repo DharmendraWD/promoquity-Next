@@ -1,12 +1,9 @@
-import React from 'react'
-import Hero from './components/Hero'
+// app/(home)/page.jsx
 
-const page = () => {
-  return (
-  <>
-  <Hero></Hero>
-  </>
-  )
+import Hero from './components/Hero'; // Server Component
+import LoggedInHome from './LoggedInHome'; // Client Component
+import ClientAuthWrapper from './ClientAuthWrapper/ClientAuthWrapper'; // NEW
+
+export default function Page() {
+  return <ClientAuthWrapper fallback={<Hero />} />;
 }
-
-export default page

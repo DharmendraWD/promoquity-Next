@@ -8,6 +8,11 @@ import cardImg from '../../../../public/img/Lightshade.png'
 import ru from '../../../../public/img/ru.png'
 // /HomeContentMid/GetPagedHomeContentMidList?pageIndex=1&pageSize=10`
 
+import ticketimg0 from '../../../../public/lowTicket/11.png'
+import ticketimg1 from '../../../../public/lowTicket/22.png'
+import ticketimg2 from '../../../../public/lowTicket/rech1.png'
+import ticketimg3 from '../../../../public/lowTicket/44.png'
+
 function HomepageCard() {
       let cards = [
           {
@@ -31,6 +36,9 @@ function HomepageCard() {
             image: cardImg,
           }
         ]
+    const ticketImages = [ticketimg0, ticketimg1, ticketimg2, ticketimg3];
+
+
   return (
      <div className="py-[120px]">
       <HeadingL label="Low ticket size" />
@@ -39,16 +47,20 @@ function HomepageCard() {
 
    {cards.map((card, index) => (
            <div key={index} className="bg_transparent relative rounded-[20px] min-h-[320px]  w-[100%] overflow-hidden p-4 md:p-6 lg:p-8 text-white">
-             <Image width={0} height={0} src={card?.image || cardImg} alt="Card Image" className=" absolute right-[10%] w-[100px] opacity-40 object-cover mb-4 rounded" />
+             {/* <Image width={0} height={0} src={card?.image || cardImg} alt="Card Image" className=" absolute right-[10%] w-[100px] opacity-40 object-cover mb-4 rounded" />
              <Image width={0} height={0} src={ru} alt="" className='background: #6b6969;
        padding: 7px;
-       border-radius: 8px; absolute top-[10%]' />
-       <div className='h-full flex flex-col justify-end pb-[10px]'> 
-          <div>
-              <h3 className="text-xl font-semibold mb-2">{card?.topic}</h3>
-             <p className="text-sm text-gray-400">{card?.description}</p>
-          </div>
-           </div></div>
+       border-radius: 8px; absolute top-[10%]' /> */}
+
+               <div className='h-full flex flex-col pb-[p5x]'> 
+    <Image width={300} height={300} src={ticketImages[index]} alt={`Ticket ${index}`} className="widthWkitFIll mx-auto rounded-[20px] h-[170px]" />
+       <div className='mt-1'>
+           <h3 className="text-xl oneLinePara font-semibold mb-2">{card?.topic}</h3>
+          <p className="text-sm text-gray-400 threeLinePara">{card?.description}</p>
+       </div>
+        </div>
+           
+           </div>
          ))}
  
 </div></div>

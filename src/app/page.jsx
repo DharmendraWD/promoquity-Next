@@ -12,13 +12,6 @@ export default function Home() {
   return (
    <div className="mx-auto">
    <Page></Page>
-   <MultiCarousel></MultiCarousel>
-   <LowTicket></LowTicket>
-<TeamSupport></TeamSupport>
-   <FAQ ></FAQ>
-   <FirstThreeBlogs></FirstThreeBlogs>
-   <AboveFooter  my={"100px"}></AboveFooter>
-   <Footer></Footer>
    </div>
   );
 }

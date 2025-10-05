@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react'
+
+"use client";
+import React, { use, useEffect, useState } from 'react'
 import { FaBars, FaChevronDown, FaTimes } from 'react-icons/fa';
-import { IoLogOut } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../../redux/slices/auth/LoginSlice';
-import Loading from '../utilities/loading/Loading';
+import Loading from '../Loading/Loading';
+import { useRouter } from 'next/navigation'; 
+import { logoutUser } from '@/store/slices/Login/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
-
-import {userProfile} from '../../redux/slices/user/Userslice'
-
 
 
 function NavProfile() {
     const [submenuOpen, setSubmenuOpen] = useState('');
     const [showLogoutModal, setShowLogoutModal] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const isLoading = useSelector((state) => state.login.loading);
+          const router = useRouter();
+
+    const auth = useSelector((state) => state.auth);
+
+          const dispatch = useDispatch();
+
+
     
       const toggleSubmenu = (item) => {
         setSubmenuOpen((prev) => (prev === item ? '' : item));
@@ -24,30 +25,32 @@ function NavProfile() {
   
 
     const handleLogoutConfirm = () => {
-  
-      dispatch(logoutUser());
-      navigate('/');
       setShowLogoutModal(false);
-      };
-    
-// -----------get user profiele data 
-const userData = useSelector((state) => state.user);
+  dispatch(logoutUser());
+     router.push('/');
+      window.location.reload();
 
-useEffect(() => {
-  dispatch(userProfile());
-}, []);
+      };
+
+      console.log(auth)
+
+    
+      // /User/userprofile?userCode=${userId}
+// -----------get user profiele data 
 
   return (
     <div className='relative'>
-       {
+       {/* {
   isLoading && <> 
   <div className="flex absolute top-[19px]-translate-y-1/2 justify-center w-full ">
       <Loading></Loading>
 
 </div>
   </>
-}
-       <div className="flex space-x-4 items-center">        
+} */}
+       <div className="flex space-x-4 items-center">
+          {
+  auth.isAuthenticated &&         
        <div className="relative group inline-block">
   {/* Trigger area */}
   <div className="cursor-pointer">
@@ -57,7 +60,7 @@ useEffect(() => {
       alt=""
     />
     <button className="text-[white]  md:flex hidden text-[14px] hover:text-indigo-600 items-center gap-1">
-     Hi, {userData?.user?.firstName || ''}
+     Hi, {"user?.firstName" || ''}
       <FaChevronDown size={9} />
     </button>
   </div>
@@ -67,7 +70,7 @@ useEffect(() => {
     <p
       className="block md:hidden text-[14px] px-2 py-1 text-[black] hover:bg-grey-100"
     >
-     {userData?.user?.firstName || ''}
+     {"user?.firstName"  || ''}
     </p>
     
 
@@ -77,8 +80,10 @@ useEffect(() => {
     >
       <p className="mb-0">Log Out</p>
     </div>
-  </div>
+  </div> 
+ 
 </div>
+    }
 
        
             </div>

@@ -6,14 +6,39 @@ import man2 from '../../../../public/img/man2.jpg';
 import man3 from '../../../../public/img/man3.jpg';
 import HeadingL from '@/components/utilities/HeadingL';
 import Image from 'next/image';
+import axios from 'axios';
+import Loading from '@/components/Loading/Loading';
+
 
 // /HomeContent/GetPagedHomeContentList?pageIndex=1&pageSize=10
 
 const TeamSupport = () => {
+  const [items, setitems] = useState([]);
+  const BASE_API = process.env.NEXT_PUBLIC_BASE_API;
     const [showPopup, setShowPopup] = useState(false);
 
+    const [isloading, setisloading] = useState(false)
 
-   
+      useEffect(() => {
+    const fetchItems = async () => {
+      setisloading(true)
+      try {
+        const res = await axios.get(`${BASE_API}/HomeContent/GetPagedHomeContentList?pageIndex=1&pageSize=10`);
+        const data = await res.data?.data?.items?.[1] || [];
+        setitems(data); // Assign fetched items
+        setisloading(false)
+      } catch (error) {
+        console.error("Failed to fetch items:", error);
+        return null
+      }
+    };
+
+    fetchItems();
+  }, [BASE_API]);
+
+  if(isloading){
+    return null
+  } 
   return (
     <div className="flex xl:flex-row flex-col w-auto  lg:w-[1182px] mx-auto justify-between items-center gap-[85px]">
       <div className="w-[90%] lg:w-[500px]  relative h-[456px] shrink-0">
@@ -49,17 +74,17 @@ const TeamSupport = () => {
   {/* The "Precise Care" Tag */}
   <div className="flex justify-center items-center p-4">
   <div className="rounded-[57px] text-gray-400 border-b border-b-white/20 px-8 py-3 text-lg font-medium">
-  Precise Care
+  Promoquity Care
   </div>
   </div>
   
   {/* Main Heading */}
-  <HeadingL label={"teamSupportData?.topic"} />
+  <HeadingL label={items?.topic} />
   
   {/* Description Paragraph */}
   <div className="paraandTopic ">
     <p className="text-gray-400 text-base sm:text-lg md:text-xl  max-w-2xl twoLinePara">
-  {"teamSupportData?.description"}
+  {items?.description}
   </p><span
       className="text-white cursor-pointer ml-1 flex items-center gap-1"
       onClick={() => setShowPopup(true)}
@@ -78,18 +103,18 @@ const TeamSupport = () => {
     
       </div>
       {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-[#081a3b]  rounded-xl border border-dashed border-white/20 px-6 pb-6 pt-2 rounded-lg shadow-lg w-[90%] max-w-md animate-fade-in">
+        <div className="fixed inset-0 bg-[#00000087] bg-opacity-40 flex items-center justify-center z-50" onClick={(e) => {e.stopPropagation(); setShowPopup(false)}} >
+          <div className="bg-[#081a3b]  rounded-xl border border-dashed border-white/20 px-6 pb-6 pt-2 rounded-lg shadow-lg w-[90%] lg:max-w-[80%] lg:min-w-[80%] max-w-md animate-fade-in">
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => setShowPopup(false)}
-                className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700"
+                className="px-4 py-2 rounded bg-[grey] text-[#b70000] hover:bg-red-400 hover:text-white"
               >
                X
               </button>
             </div>
             {/* <h2 className="text-lg font-semibold text-gray-800 mb-4">Confirm Logout</h2> */}
-            <p className="text-white mb-6">{"teamSupportData?.description"}</p>
+            <p className="text-white mb-6">{items?.description}</p>
 
           </div>
         </div>

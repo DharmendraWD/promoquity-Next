@@ -1,8 +1,8 @@
 "use client";
 
-// import NavProfile from './NavProfile';
+import NavProfile from './NavProfile';
 // import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { HiBars3, HiXMark } from 'react-icons/hi2'; // Import icons from Heroicons
 import Button2 from '../utilities/Button2';
 import { usePathname } from 'next/navigation'; // ⬅️ Add this import at the top
@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation'; // ⬅️ Add this import at the 
 import Logo1 from '../../../public/img/Logo1.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
     const pathname = usePathname(); // get the current URL path
@@ -24,17 +25,16 @@ const Navbar = () => {
         { name: 'News', href: '/news' },
         { name: 'Download', href: '/downloads' },
         { name: 'Nepse', href: '/nepse' },
-        // { name: 'Protected', href: '/protected' },
+        { name: 'OTC', href: '/otc' },
+        { name: 'IPO Pipeline', href: '/ipopipeline' },
+        // { name: 'Protected', href: '/protected' }
         
     ];
 
 const handleCloseMenu = () => {
   setIsMenuOpen(false);
-  console.log(isMenuOpen)
-  console.log("first")
 }
-//  const isAuthenticated = useSelector((state) => state.login.isAuthenticated);
- const isAuthenticated = false;
+
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -48,6 +48,8 @@ const handleCloseMenu = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+// --------------
+    const auth = useSelector((state) => state.auth);
 
  
     return (
@@ -79,7 +81,7 @@ const handleCloseMenu = () => {
                 {/* Login / Signup Button */}
                 <div className="flex items-center space-x-4">
                {
-                isAuthenticated ? (
+                auth.isAuthenticated ? (
                 //   <Button2 widthValue={"fit"} clr={"#f70000"} label="Logout" link="/logout"></Button2>
                 <>
                 <NavProfile></NavProfile>
@@ -136,7 +138,7 @@ const handleCloseMenu = () => {
                     </Link> */}
 
                        {
-                isAuthenticated ? (
+                auth.isAuthenticated ? (
                     <>
                     <Button2 widthValue={"fit"} clr={'#f70000'} label="Logout" link="/logout"></Button2>
                 {/* <NavProfile></NavProfile> */}

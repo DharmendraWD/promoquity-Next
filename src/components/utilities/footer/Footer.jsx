@@ -6,7 +6,30 @@ import Image from 'next/image';
 
 
 
-const Footer = () => {
+const Footer = async () => {
+
+// const footerItems = data?.data?.data?.items;
+// /PromoConfig/GetPagedPromoConfigList?pageIndex=1&pageSize=10
+
+  const BASE_API = process.env.BASE_API;
+  const BASE_CONTENT = process.env.BASE_CONTENT;
+  let footerData = null;
+
+    try {
+    const response = await fetch(`${BASE_API}/PromoConfig/GetPagedPromoConfigList?pageIndex=1&pageSize=10`, {
+    });
+
+    if (!response.ok) throw new Error('Failed to fetch data');
+    const result = await response.json();
+    footerData = result;
+  } catch (error) {
+    console.error(error);
+    return <div className="text-white text-center mt-10">Failed to load blog post.</div>;
+  }
+
+  if(footerData){
+    console.log(footerData.data)
+  }
     let footerItems = [
         {
           "id": 1,
@@ -86,26 +109,29 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-gray-400 flex flex-col">
 
          {
-  footerItems?.map((item, index) => {
-    // Skip if the title is "Our Office:"
+  footerData?.data?.items?.map((item, index) => {
     if (item?.title === "Our Office:") return null;
 
     return (
-      <Link
-        key={index}
-        href={{
-          pathname:
-            "/legal/" +
-            item?.title
-              .replace(/\s+/g, '-')
-              .toLowerCase()
-              .replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
-        }}
-        state={{ id: index }} // Pass the ID here
-        className="hover:underline"
-      >
-        {item?.title}
-      </Link>
+  <Link
+  key={index}
+  href={{
+    pathname:
+      "/legal/" +
+      item?.title
+        .replace(/\s+/g, '-')
+        .toLowerCase()
+        .replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+    query: {
+      data: item?.description, // ✅ pass your data here
+      id: index,
+      title: item?.title
+    }
+  }}
+  className="hover:underline"
+>
+  {item?.title}
+</Link>
     );
   })
 }
@@ -117,7 +143,7 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Our Office</h4>
             <ul className="space-y-2 text-sm text-gray-400 max-w-[230px]">
     {
-  footerItems?.map((item, index) => {
+   footerData?.data?.items?.map((item, index) => {
     if (item?.title !== "Our Office:") return null;
 
     // Extract parts from description
