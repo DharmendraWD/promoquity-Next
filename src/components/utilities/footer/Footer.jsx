@@ -28,7 +28,7 @@ const Footer = async () => {
   }
 
   if(footerData){
-    console.log(footerData.data)
+    // console.log(footerData.data)
   }
     let footerItems = [
         {

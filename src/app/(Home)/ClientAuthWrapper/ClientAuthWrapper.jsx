@@ -1,18 +1,15 @@
 // app/(home)/components/ClientAuthWrapper.jsx
 "use client";
-
-import { useEffect, useState } from 'react';
-import LoggedInHome from '../LoggedInHome';
+import { useSelector } from 'react-redux';
+import Protected from '@/app/protected/page';
 
 export default function ClientAuthWrapper({ fallback }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  // const [isLoggedIn, setIsLoggedIn] = useState(null);
+  let isLoggedIn = useSelector((state) => state.isAuth.token);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-  }, []);
+  if (isLoggedIn === null) return <div className='min-h-screen bg-red-200 w-full flex justify-center self-center  items-center m-auto'>
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium eligendi excepturi rem odit, suscipit optio explicabo quod iste fugit esse.
+  </div>;
 
-  if (isLoggedIn === null) return <div>Loading...</div>;
-
-  return isLoggedIn ? <LoggedInHome /> : fallback;
+  return isLoggedIn ? <h1 className='min-h-screen bg-green-200 w-full flex justify-center self-center  items-center m-auto'>You are Logged In</h1> : fallback;
 }

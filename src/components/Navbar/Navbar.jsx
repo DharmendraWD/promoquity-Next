@@ -27,6 +27,7 @@ const Navbar = () => {
         { name: 'Nepse', href: '/nepse' },
         { name: 'OTC', href: '/otc' },
         { name: 'IPO Pipeline', href: '/ipopipeline' },
+        { name: 'Protected', href: '/protected' },
         // { name: 'Protected', href: '/protected' }
         
     ];
@@ -49,7 +50,8 @@ const handleCloseMenu = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 // --------------
-    const auth = useSelector((state) => state.auth);
+    const token = useSelector((state) => state.isAuth.token);
+    const useId = useSelector((state) => state.isAuth.userId);
 
  
     return (
@@ -80,11 +82,11 @@ const handleCloseMenu = () => {
 
                 {/* Login / Signup Button */}
                 <div className="flex items-center space-x-4">
-               {
-                auth.isAuthenticated ? (
+                {
+                token && useId ? (
                 //   <Button2 widthValue={"fit"} clr={"#f70000"} label="Logout" link="/logout"></Button2>
                 <>
-                <NavProfile></NavProfile>
+                <NavProfile token={token} useId={useId}></NavProfile>
                 
                 </>
                 ) : (
@@ -94,7 +96,7 @@ const handleCloseMenu = () => {
                     </div>
                   </>
                 )
-               }
+               } 
 
                     {/* Mobile Menu Button (Visible on small screens) */}
                     <button
@@ -138,7 +140,7 @@ const handleCloseMenu = () => {
                     </Link> */}
 
                        {
-                auth.isAuthenticated ? (
+                token && useId ? (
                     <>
                     <Button2 widthValue={"fit"} clr={'#f70000'} label="Logout" link="/logout"></Button2>
                 {/* <NavProfile></NavProfile> */}

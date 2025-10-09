@@ -32,7 +32,9 @@ const BASE_API = process.env.NEXT_PUBLIC_BASE_API || 'https://your-default-api.c
     fetchData();
   }, []);
   if (isLoading) {
-    return <Loading />;
+    return <div className="flex justify-center items-center h-screen w-[97vw] mx-auto">
+      <Loading />
+    </div>;
   }
 
 let companyProfile = data?.data?.items;

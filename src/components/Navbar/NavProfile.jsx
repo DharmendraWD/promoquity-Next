@@ -4,16 +4,20 @@ import React, { use, useEffect, useState } from 'react'
 import { FaBars, FaChevronDown, FaTimes } from 'react-icons/fa';
 import Loading from '../Loading/Loading';
 import { useRouter } from 'next/navigation'; 
-import { logoutUser } from '@/store/slices/Login/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { setAuth } from '@/store/slices/Login/isAuth';
+import { userDets } from '@/store/slices/user/userDet';
+
 
 
 function NavProfile() {
+
     const [submenuOpen, setSubmenuOpen] = useState('');
     const [showLogoutModal, setShowLogoutModal] = useState(false);
           const router = useRouter();
 
-    const auth = useSelector((state) => state.auth);
+    const token = useSelector((state) => state.isAuth.token);
+    const useId = useSelector((state) => state.isAuth.userId);
 
           const dispatch = useDispatch();
 
@@ -25,32 +29,30 @@ function NavProfile() {
   
 
     const handleLogoutConfirm = () => {
+      dispatch(setAuth({ token:"", userId:"" }));
+
+        document.cookie = 'token=; path=/; max-age=0';
+    document.cookie = 'userId=; path=/; max-age=0';
+      
       setShowLogoutModal(false);
-  dispatch(logoutUser());
      router.push('/');
       window.location.reload();
 
       };
-
-      console.log(auth)
-
-    
-      // /User/userprofile?userCode=${userId}
 // -----------get user profiele data 
+const userData = useSelector((state) => state?.userData?.userData);
+// const loading = useSelector((state) => state?.userData?.loading);
+useEffect(() => {
+dispatch(userDets(useId));
+}, [])
+
 
   return (
     <div className='relative'>
-       {/* {
-  isLoading && <> 
-  <div className="flex absolute top-[19px]-translate-y-1/2 justify-center w-full ">
-      <Loading></Loading>
-
-</div>
-  </>
-} */}
+  
        <div className="flex space-x-4 items-center">
           {
-  auth.isAuthenticated &&         
+ token &&         
        <div className="relative group inline-block">
   {/* Trigger area */}
   <div className="cursor-pointer">
@@ -60,7 +62,7 @@ function NavProfile() {
       alt=""
     />
     <button className="text-[white]  md:flex hidden text-[14px] hover:text-indigo-600 items-center gap-1">
-     Hi, {"user?.firstName" || ''}
+     Hi, {userData?.firstName || ''}
       <FaChevronDown size={9} />
     </button>
   </div>
@@ -115,3 +117,19 @@ function NavProfile() {
 }
 
 export default NavProfile
+
+// "use client";
+// import React from 'react'
+// import { useSelector, useDispatch } from 'react-redux';
+
+// const NavProfile = () => {
+//     const token = useSelector((state) => state.isAuth.token);
+//     const useId = useSelector((state) => state.isAuth.userId);
+  
+//     console.log(useId)
+//   return (
+//     <div >NavProfile Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque tempora doloremque obcaecati maxime suscipit officia molestias facere praes</div>
+//   )
+// }
+
+// export default NavProfile

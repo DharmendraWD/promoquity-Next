@@ -1,16 +1,18 @@
-"use client";
-// import pdfFile from "../../../public/OTC.pdf";
-import { useEffect } from "react";
+import React from 'react';
 
-const Otc = () => {
-  useEffect(() => {
-    // This path is relative to the root of your deployed domain
-    const pdfUrl = '/OTC.pdf'; 
-    window.open(pdfUrl, '_blank');
-    window.location.href = '/';
-  }, []);
-
-  return <></>;
+const OtcPage = () => {
+  return (
+    <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
+      <div className="w-full max-w-4xl h-[90vh] border shadow-lg">
+        <iframe
+          src="/OTC.pdf"
+          width="100%"
+          height="100%"
+          style={{ border: 'none' }}
+        />
+      </div>
+    </div>
+  );
 };
 
-export default Otc;
+export default OtcPage;
