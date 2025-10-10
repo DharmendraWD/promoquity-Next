@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import noImage from '../../../../public/img/noimage.png';
+import noImage from '../../../../public/img/noImage.png';
 import axios from 'axios';
 import Loading from '@/components/Loading/Loading';
 

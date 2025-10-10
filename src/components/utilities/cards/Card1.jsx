@@ -1,5 +1,4 @@
 
-import cardImg from '../../../../public/img/Lightshade.png'
 import ticketimg0 from '../../../../public/lowTicket/11.png'
 import ticketimg1 from '../../../../public/lowTicket/22.png'
 import ticketimg2 from '../../../../public/lowTicket/44.png'

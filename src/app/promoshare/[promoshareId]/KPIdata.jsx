@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import noImg from '../../../../public/img/noimage.png'
-import googleAdImg from '../../../../public/img/googleAd.png'
-import Barclays from '../../../../public/img/Barclays.png'
+
 
 import dollarImg from '../../../../public/img/dollar.png'
 import up from '../../../../public/img/up.png'
@@ -14,8 +12,8 @@ import assets from '../../../../public/img/assets.png'
 import profit from '../../../../public/img/profit.png'
 import warn from '../../../../public/img/warn.png'
 import Image from "next/image";
-import HeadingL from "@/components/utilities/HeadingL";
 import Loading from "@/components/Loading/Loading";
+import KpiDescDests from "./KpiDescDests";
 
 
 
@@ -50,7 +48,6 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
     try {
       setLoading(true);
       const response = await fetch(`${BASE_API}${api}`, {
-        cache: "no-store",
       });
 
       if (!response.ok) {
@@ -106,6 +103,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
                  setmarket(null);
       setfinancialKPI(activeKpiData);
       setparaGraph(activeKpiData?.data?.items?.[0]?.description)
+
     } else if (btnClicked === "Valuation KPI") {
                  setmarket(null);
 
@@ -257,7 +255,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
           {/* 1st card */}
           <div className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 rounded-xl shadow-lg w-full">
             <div className="flex justify-between items-center mb-2">
-              <div className="flex justify-between w-full items-center gap-2">
+              <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">P/B Ratio</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
                   <img src={warn} alt="" />
@@ -274,7 +272,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
           {/* 2nd card */}
           <div className="bg-white/5 border border-dashed border-white/20 p-5 rounded-xl shadow-lg w-full">
             <div className="flex justify-between items-center mb-2">
-              <div className="flex justify-between w-full items-center gap-2">
+              <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">Dividend Yield</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
                   <img src={warn} alt="" />
@@ -291,7 +289,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
           {/* 3rd card */}
           <div className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5  shadow-lg w-full">
             <div className="flex justify-between items-center mb-2">
-              <div className="flex justify-between w-full items-center gap-2">
+              <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">EBITDA</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
                   <img src={warn} alt="" />
@@ -325,7 +323,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
         {/* 1st card  */}
     <div key={"1006"} className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">    
-        <div className='flex justify-between w-full items-center gap-2'>
+        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
               <div>
                <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
               </div>
@@ -343,7 +341,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
     {/* 2nd card */}
     <div key={"1005"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">    
-        <div className='flex justify-between w-full items-center gap-2'>
+        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
               <div>
                <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
               </div>
@@ -378,7 +376,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
         {/* 1st card  */}
     <div key={"1006"} className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">    
-        <div className='flex justify-between w-full items-center gap-2'>
+        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
               <div>
                <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
               </div>
@@ -396,7 +394,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
     {/* 2nd card */}
     <div key={"1005"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">    
-        <div className='flex justify-between w-full items-center gap-2'>
+        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
               <div>
                <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
               </div>
@@ -430,6 +428,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
         </p>
        
       </div>
+
+          <KpiDescDests clickedId={activeIndex}></KpiDescDests>
+
     </>
   );
 };

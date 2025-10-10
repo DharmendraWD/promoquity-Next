@@ -4,8 +4,8 @@ import Image from 'next/image'
 function Loading() {
   return (
     
-<div className="flex">
-<Image width={300} height={300} src={loadingImg} alt="Loading..." className="mx-auto my-20 h-20 w-20" />
+<div className="flex w-full items-center justify-center min-h-screen">
+<Image width={600} height={600} src={loadingImg} alt="Loading..." className="mx-auto my-20 h-[200px] w-[200px]" />
 </div>
   )
 }

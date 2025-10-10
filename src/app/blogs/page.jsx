@@ -4,6 +4,7 @@ import axios from 'axios';
 import BlogPostCard from './components/BlogCard';
 import noImage from "../../../public/img/noImage.png";
 import FirstThreeBlogs from '@/components/utilities/blogs/FirstThreeBlogs';
+import Loading from '@/components/Loading/Loading';
 
 const AllBlogPosts = () => {
   const BASE_API = process.env.NEXT_PUBLIC_BASE_API;
@@ -16,18 +17,18 @@ const AllBlogPosts = () => {
 
   const numOfBlogs = 9;
 
-  // ✅ Set current page from localStorage once we’re on client
+  //  Set current page from localStorage once we’re on client
   useEffect(() => {
     const savedPage = parseInt(localStorage.getItem('blogCurrentPage')) || 1;
     setCurrentPage(savedPage);
   }, []);
 
-  // ✅ Save to localStorage whenever page changes
+  //  Save to localStorage whenever page changes
   useEffect(() => {
     localStorage.setItem('blogCurrentPage', currentPage);
   }, [currentPage]);
 
-  // ✅ Fetch blogs when page changes
+  // Fetch blogs when page changes
   useEffect(() => {
     const fetchBlogs = async () => {
       setIsLoading(true);
@@ -88,11 +89,11 @@ const AllBlogPosts = () => {
     );
   };
 
-  // ✅ Show loading
+  //  Show loading
   if (isLoading) {
     return (
       <div className='text-white min-h-screen flex justify-center items-center text-2xl'>
-        Loading...
+       {/* <Loading></Loading> */}
       </div>
     );
   }
