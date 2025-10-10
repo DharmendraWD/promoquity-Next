@@ -13,6 +13,8 @@ import FirstThreeBlogs from '@/components/utilities/blogs/FirstThreeBlogs';
 import AboveFooter from '@/components/utilities/footer/AboveFooter';
 import Footer from '@/components/utilities/footer/Footer';
 import ProcessFlow from '@/components/utilities/cards/ProcessFlow';
+import user1 from '../../../../public/img/user11.jpg';
+import user2 from '../../../../public/img/user22.jpg';
 
 export default async function HeroSection() {
 const response = await fetch(`${process.env.BASE_API}/HomeContent/GetPagedHomeContentList?pageIndex=1&pageSize=10`, );
@@ -44,10 +46,10 @@ const BASE_CONTENT = process.env.BASE_CONTENT
                   <Image width={30} height={30} src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=250&auto=format&fit=crop" alt="User 1" className="object-cover w-full h-full" />
                 </div>
                 <div className="relative w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] rounded-full border-2 border-white overflow-hidden ml-[-20px]">
-                  <Image alt="user" width={30} height={30} src="https://randomuser.me/api/portraits/women/75.jpg" className="object-cover w-full h-full" />
+                  <Image alt="user" width={30} height={30} src={user1} className="object-cover w-full h-full" />
                 </div>
                 <div className="relative w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] rounded-full border-2 border-white overflow-hidden ml-[-20px]">
-                  <Image alt="user" width={30} height={30} src="https://randomuser.me/api/portraits/women/64.jpg" className="object-cover w-full h-full" />
+                  <Image alt="user" width={30} height={30} src={user2}  className="object-cover w-full h-full" />
                 </div>
               </div>
               <span className="text-white text-sm sm:text-xl md:text-xl font-medium whitespace-nowrap">
