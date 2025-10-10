@@ -40,7 +40,7 @@ src={Logo1}
 alt="Hand holding a phone"
 className="w-full"
 />      
-)})
+)}
 </div>
 <div className="bottomHandGrdientDiv absolute bottom-[-2px] left-0 w-full h-[254px]">
 {/* <div className="bottomHandGrdientDiv absolute bottom-[-2px] left-0 w-full h-[254px]" style={{ background: handBg }}> */}
