@@ -1,43 +1,39 @@
-"use client";
 
-import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import noImage from '../../../../public/img/noImage.png';
-import axios from 'axios';
-import Loading from '@/components/Loading/Loading';
-
-const PromoShareCard = () => {
-const BASE_API = process.env.NEXT_PUBLIC_BASE_API || 'https://your-default-api.com';
+const PromoShareCard = async () => {
+const BASE_API = process.env.BASE_API || 'https://your-default-api.com';
+const BASE_CONTENT = process.env.BASE_CONTENT || '';
 // console.log(BASE_API);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(
-          `${BASE_API}/CompanyProfile/GetPagedCompanyProfileList?pageIndex=1&pageSize=10`
-        );
-        setData(response?.data);
-        // console.log("data", response.data);
-        setIsLoading(false);
-      } catch (error) {
-        // console.error(error);
-        setIsLoading(false);
+  let companyProfile = [];
+
+  try {
+    const res = await fetch(
+      `${BASE_API}/CompanyProfile/GetPagedCompanyProfileList?pageIndex=1&pageSize=10`,
+      {
+        cache: 'no-store', // SSR (no caching). Use 'force-cache' or revalidate for ISR.
       }
-    };
-    fetchData();
-  }, []);
-  if (isLoading) {
-    return <div className="flex justify-center items-center h-screen w-[97vw] mx-auto">
-      <Loading />
-    </div>;
+    );
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch company profiles');
+    }
+
+    const data = await res.json();
+    companyProfile = data?.data?.items || [];
+  } catch (error) {
+    console.error('SSR Error:', error);
+    // Optional: fallback UI
+    return <div className="text-center text-gray-400 py-10">Failed to load data.</div>;
   }
 
-let companyProfile = data?.data?.items;
+  if (!companyProfile.length) {
+    return <div className="text-center text-gray-400 py-10">No companies found.</div>;
+  }
+
 
   return (
     <>

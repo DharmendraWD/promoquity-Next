@@ -2,7 +2,6 @@
 "use client";
 import React, { use, useEffect, useState } from 'react'
 import { FaBars, FaChevronDown, FaTimes } from 'react-icons/fa';
-import Loading from '../Loading/Loading';
 import { useRouter } from 'next/navigation'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from '@/store/slices/Login/isAuth';

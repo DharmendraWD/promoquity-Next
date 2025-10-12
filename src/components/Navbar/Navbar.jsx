@@ -5,14 +5,13 @@ import NavProfile from './NavProfile';
 import React, { use, useEffect, useState } from 'react';
 import { HiBars3, HiXMark } from 'react-icons/hi2'; // Import icons from Heroicons
 import Button2 from '../utilities/Button2';
-import { usePathname } from 'next/navigation'; // ⬅️ Add this import at the top
+import { usePathname } from 'next/navigation'; //  Add this import at the top
 
 import Logo1 from '../../../public/img/Logo1.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 
-const Navbar = () => {
+const Navbar = ({token}) => {
     const pathname = usePathname(); // get the current URL path
 
     // State to manage the mobile menu visibility
@@ -50,8 +49,7 @@ const handleCloseMenu = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 // --------------
-    const token = useSelector((state) => state.isAuth.token);
-    const useId = useSelector((state) => state.isAuth.userId);
+
 
  
     return (
@@ -83,10 +81,10 @@ const handleCloseMenu = () => {
                 {/* Login / Signup Button */}
                 <div className="flex items-center space-x-4">
                 {
-                token && useId ? (
+                token  ? (
                 //   <Button2 widthValue={"fit"} clr={"#f70000"} label="Logout" link="/logout"></Button2>
                 <>
-                <NavProfile token={token} useId={useId}></NavProfile>
+                <NavProfile token={token}></NavProfile>
                 
                 </>
                 ) : (
@@ -140,7 +138,7 @@ const handleCloseMenu = () => {
                     </Link> */}
 
                        {
-                token && useId ? (
+                token ? (
                     <>
                     <Button2 widthValue={"fit"} clr={'#f70000'} label="Logout" link="/logout"></Button2>
                 {/* <NavProfile></NavProfile> */}

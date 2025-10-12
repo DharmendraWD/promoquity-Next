@@ -1,5 +1,4 @@
 
-"use client";
 import HeadingL from '../HeadingL';
 import Para from '../Para';
 import { MdArrowOutward } from "react-icons/md";
@@ -7,44 +6,41 @@ import noImg from '../../../../public/img/noImage.png';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from '../Button';
-import Loading from '@/components/Loading/Loading';
+// import Loading from '@/components/Loading/Loadingk';
 import parse from 'html-react-parser';
 import formatDate from '../features/dateFormat';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 
 
-const FirstThreeBlogs = () => {
-const [isLoading, setLoading] = useState(true)
-let BASE_API = process.env.NEXT_PUBLIC_BASE_API;
-let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
-  const [Blogitems, setitems] = useState([]);
+const FirstThreeBlogs = async() => {
+const BASE_API = process.env.BASE_API; 
+const BASE_CONTENT = process.env.BASE_CONTENT;
 
+ let blogItems = [];
 
-useEffect(() => {
-  const fetchItems = async () => {
-    try {
-      const res = await axios.get(`${BASE_API}/Blog/GetPagedBlogList?pageIndex=1&pageSize=3`);
-      setitems(res.data?.data?.items || []);
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await fetch(`${BASE_API}/Blog/GetPagedBlogList?pageIndex=1&pageSize=3`, {
+    });
 
-  fetchItems();
-}, [BASE_API]);
+    if (!res.ok) throw new Error('Failed to fetch blogs');
 
+    const data = await res.json();
+    blogItems = data?.data?.items || [];
+  } catch (err) {
+    console.error(' Blog fetch failed:', err);
+
+  }
+
+  if (!blogItems.length) {
+    return <div className="text-center text-gray-400 py-10">No blogs available</div>;
+  }
 
 
 // let formatedDate1 = formatDate(data?.data?.items?.[0].createdDate);
 
-if(isLoading === true){
-  return <Loading />;
-}
+
 // formatDate(data?.data?.items?.[0].createdDate)
-let firstBlogDesc= Blogitems?.[0]?.blogDesc;
+let firstBlogDesc= blogItems?.[0]?.blogDesc;
 
 
   return (
@@ -56,19 +52,19 @@ let firstBlogDesc= Blogitems?.[0]?.blogDesc;
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 w-full">
         {/* Large Card */}
 
-        {Blogitems && (
+        {blogItems && (
           <div className="relative allCards group overflow-hidden  md:col-span-1 lg:col-span-1">
-       <Link href={`/blogs/${Blogitems?.[0]?.id}`} className=''>
+       <Link href={`/blogs/${blogItems?.[0]?.id}`} className=''>
         <div className='flex  flex-col md:flex-row bg-transparent rounded-lg overflow-hidden'>
          <div className='h-min'>
            <Image width={0} height={0}
-            src={BASE_CONTENT + Blogitems?.[0]?.fileURL+ Blogitems?.[0]?.image1}
+            src={BASE_CONTENT + blogItems?.[0]?.fileURL+ blogItems?.[0]?.image1}
             alt={"img"}
             className="w-full h-[50%] object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-105"
           />
           <div className=" inset-0 flex flex-col justify-end ">
-            <div className="text-gray-400 mt-2 text-lg flex justify-between mb-1">{formatDate(Blogitems ? Blogitems?.[0].createdDate: "")} <MdArrowOutward /></div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 leading-tight twoLinePara">{Blogitems?.[0]?.blogTitle}</h2>
+            <div className="text-gray-400 mt-2 text-lg flex justify-between mb-1">{formatDate(blogItems ? blogItems?.[0].createdDate: "")} <MdArrowOutward /></div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 leading-tight twoLinePara">{blogItems?.[0]?.blogTitle}</h2>
 
           </div>
         </div>
@@ -81,7 +77,7 @@ let firstBlogDesc= Blogitems?.[0]?.blogDesc;
 
         {/* Small Cards */}
         <div className="grid grid-cols-1 gap-8">
-          {Blogitems?.slice(1, 3).map((blog, index) => (
+          {blogItems?.slice(1, 3).map((blog, index) => (
             <div key={index} className="flex allCards flex-col md:flex-row  bg-transparent rounded-lg overflow-hidden">
               <div className=''>
               <Link href={`/blogs/`+blog.id} className=''>
@@ -95,7 +91,7 @@ let firstBlogDesc= Blogitems?.[0]?.blogDesc;
                 />
               </div>
               <div className="pr-4 md:pr-6 w-full flex-grow flex flex-col justify-start">
-                <span className="text-gray-400 text-sm mb-1">{formatDate(Blogitems ? Blogitems?.[index+1].createdDate : "")} </span>
+                <span className="text-gray-400 text-sm mb-1">{formatDate(blogItems ? blogItems?.[index+1].createdDate : "")} </span>
                 <h3 className="text-xl font-bold mb-2 leading-tight twoLinePara">{blog.blogTitle}</h3>
               </div>
               </div>

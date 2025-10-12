@@ -4,7 +4,7 @@ import axios from 'axios';
 import BlogPostCard from './components/BlogCard';
 import noImage from "../../../public/img/noImage.png";
 import FirstThreeBlogs from '@/components/utilities/blogs/FirstThreeBlogs';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading/Loadingk';
 
 const AllBlogPosts = () => {
   const BASE_API = process.env.NEXT_PUBLIC_BASE_API;

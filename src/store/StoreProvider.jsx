@@ -26,7 +26,7 @@ import React, { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { createStore } from './store';
-import Loading from '@/components/Loading/Loading'; // or a fallback spinner
+// import Loading from '@/components/Loading/Loadingk'; // or a fallback spinner
 
 const StoreProvider = ({ children }) => {
   const storeRef = useRef(null);
@@ -40,7 +40,7 @@ const StoreProvider = ({ children }) => {
 
   return (
     <Provider store={storeRef.current}>
-      <PersistGate loading={<Loading />} persistor={persistorRef.current}>
+      <PersistGate  persistor={persistorRef.current}>
         {children}
       </PersistGate>
     </Provider>

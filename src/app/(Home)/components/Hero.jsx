@@ -110,7 +110,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MultiCarousel from './MultiCarousal';
 import LowTicket from './LowTicket';
-import TeamSupport from './TeamSupport';
+import TeamSupport from './TeamSupport/TeamSupport';
 import FAQ from '@/components/utilities/faq/FAQ';
 import FirstThreeBlogs from '@/components/utilities/blogs/FirstThreeBlogs';
 import AboveFooter from '@/components/utilities/footer/AboveFooter';
@@ -177,13 +177,13 @@ export default function HeroSection({ data, baseContent }) {
           </div>
         </div>
       </div>
-      {/* <MultiCarousel />
-      <LowTicket />
+      <MultiCarousel />
+   <LowTicket />
       <TeamSupport />
-      <FAQ />
+       <FAQ />
       <FirstThreeBlogs />
-      <ProcessFlow />
-      <AboveFooter my="100px" /> */}
+         <ProcessFlow />
+      <AboveFooter my="100px" /> 
     </>
   );
 }

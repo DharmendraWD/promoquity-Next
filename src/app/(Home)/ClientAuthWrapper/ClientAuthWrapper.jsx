@@ -1,15 +1,21 @@
 // app/(home)/components/ClientAuthWrapper.jsx
-"use client";
-import { useSelector } from 'react-redux';
+import { cookies } from 'next/headers';
 import Protected from '@/app/protected/page';
 
 export default function ClientAuthWrapper({ fallback }) {
-  // const [isLoggedIn, setIsLoggedIn] = useState(null);
-  let isLoggedIn = useSelector((state) => state.isAuth.token);
+  // Get cookies from request headers (server side)
+  const cookieStore = cookies();
+  const token = cookieStore.get('token')?.value;  // Adjust 'token' to your actual cookie name
 
-  if (isLoggedIn === null) return <div className='min-h-screen bg-red-200 w-full flex justify-center self-center  items-center m-auto'>
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium eligendi excepturi rem odit, suscipit optio explicabo quod iste fugit esse.
-  </div>;
+  if (!token) {
+    // No token in cookie → show fallback (e.g. login prompt)
+    return fallback || <div>Please login to continue.</div>;
+  }
 
-  return isLoggedIn ? <h1 className='min-h-screen bg-green-200 w-full flex justify-center self-center  items-center m-auto'>You are Logged In</h1> : fallback;
+  // Token exists → render protected content or "logged in" UI
+  return (
+    <h1 className='min-h-screen bg-green-200 w-full flex justify-center self-center items-center m-auto'>
+      You are Logged In
+    </h1>
+  );
 }

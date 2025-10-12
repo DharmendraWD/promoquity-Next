@@ -131,7 +131,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import Link from 'next/link';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading/Loadingk';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAuth } from '@/store/slices/Login/isAuth';
 

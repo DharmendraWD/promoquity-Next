@@ -7,7 +7,7 @@ import man3 from '../../../../public/img/man3.jpg';
 import HeadingL from '@/components/utilities/HeadingL';
 import Image from 'next/image';
 import axios from 'axios';
-import Loading from '@/components/Loading/Loading';
+// import Loading from '@/components/Loading/Loadingk';
 
 
 // /HomeContent/GetPagedHomeContentList?pageIndex=1&pageSize=10

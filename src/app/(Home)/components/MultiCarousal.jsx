@@ -141,4 +141,6 @@ let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
   );
 };
 
+
+
 export default MultiCarousel;

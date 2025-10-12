@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaDownload } from 'react-icons/fa';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading/Loadingk';
 
 const API_URL = 'http://www.taskperfect.somee.com/api/DownloadFiles';
 

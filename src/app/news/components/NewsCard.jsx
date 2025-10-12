@@ -4,7 +4,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import noImage from '../../../../public/img/noImage.png';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading/Loadingk';
 import Image from 'next/image';
 
 
