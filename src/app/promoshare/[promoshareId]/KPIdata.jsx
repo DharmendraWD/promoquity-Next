@@ -106,6 +106,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
 
     } else if (btnClicked === "Valuation KPI") {
                  setmarket(null);
+                setoperation(null);
 
         setfinancialKPI(null);
       setvaluation(activeKpiData);
@@ -136,6 +137,25 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
       setoperation(null);
     }
   }, [btnClicked, activeKpiData]);
+
+
+
+
+  // ----------------
+  const capOptions = ["Low", "Medium", "High"];
+    const [selectedCap, setSelectedCap] = useState(""); // Default selected market cap 
+ 
+  const [marketCApValue, setmarketCApValue] = useState(); // 
+    const handleClickMarketKpi = (value) => {
+    setSelectedCap(value);
+if(value === "Low"){
+  setmarketCApValue(market?.data?.items?.[0]?.lowMarketCap)
+}else if(value === "Medium"){
+  setmarketCApValue(market?.data?.items?.[0]?.medMarketCap)
+}else if(value === "High"){
+  setmarketCApValue(market?.data?.items?.[0]?.highMarketCap)
+}
+  };
 
   return (
     <>
@@ -372,45 +392,107 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
   {
     market?.data?.items?.length > 0 ? (
       market.data.items.map((data, index) => (
+      
         <React.Fragment key={index}>
-        {/* 1st card  */}
-    <div key={"1006"} className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
-      <div className="flex justify-between items-center mb-2">    
-        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
-              <div>
-               <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
-              </div>
-            <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
-              <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
-            </div>
+         {/* Beta */}
+        <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20" key={"1101"}>
+          <div className="flex justify-between items-center mb-1">
+            <p className="text-sm text-gray-300">Beta</p>
+            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">Stable</span>
+          </div>
+          <p className="text-2xl font-semibold">{data?.beta}</p>
+          <p className="text-xs text-gray-400 mt-1">Volatility vs Market</p>
+        </div>
+
+        {/* Market Cap */}
+      <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20" key={"1102"}>
+      <div className="flex justify-between items-center mb-1 flex-col md:flex-row">
+        <p className="text-sm text-gray-300">Market Cap</p>
+        <div className="flex gap-1 flex-col md:flex-row">
+          {capOptions.map((cap) => (
+            <span
+              key={cap}
+              onClick={() => handleClickMarketKpi(cap)}
+              className={`cursor-pointer text-xs px-2 py-0.5 rounded-full transition
+                ${
+                  selectedCap === cap
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                }
+              `}
+            >
+              {cap}
+            </span>
+          ))}
         </div>
       </div>
-      <div className='mt-1 text-sm font-medium mt-2'>
-        <p className="text-2xl font-semibold text-white">{data?.operatingMargin} </p>
-      </div>
+      <p className="text-2xl font-semibold">Rs: {marketCApValue}</p>
+      <p className="text-xs text-gray-400 mt-1">{selectedCap}</p>
     </div>
-    {/* 2nd card */}
-    <div key={"1005"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
-      <div className="flex justify-between items-center mb-2">    
-        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
-              <div>
-               <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
-              </div>
-            <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
-              <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+
+        {/* Production Output */}
+        <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20"  key={"1103"}>
+          <p className="text-sm text-gray-300 mb-1">Production Output</p>
+          <div className="flex justify-between flex-col md:flex-row">
+            <div>
+              <p className="text-xs text-gray-400">Retail Sales</p>
+              <p className="text-lg font-semibold text-green-400">250K</p>
             </div>
+            <div>
+              <p className="text-xs text-gray-400">Active Users</p>
+              <p className="text-lg font-semibold text-blue-400">18.2M</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='mt-1 text-sm font-medium mt-2'>
-        <p className="text-2xl font-semibold text-white">{data?.invTurnOver} </p>
+
+        {/* Volume */}
+        <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20"  key={"1104"}>
+          <p className="text-sm text-gray-300 mb-1">Volume</p>
+          <p className="text-2xl font-semibold">{data?.volume}<span className="text-sm font-normal">shares</span></p>
+          <p className="text-xs text-gray-400 mt-1">Daily Avg Volume</p>
+          {/* Optional: Add bar chart here later */}
+        </div>
+
+        {/* Due Diligence */}
+        <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20" key={"1105"}>
+  <p className="text-sm text-gray-300 mb-1">Due Diligence</p>
+  <div className="flex items-center space-x-2 flex-col md:flex-row">
+    <div className="relative w-10 h-10">
+      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+        <path
+          className="text-gray-700 stroke-current"
+          strokeWidth="3"
+          fill="none"
+          d="
+            M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831
+          "
+        />
+        <path
+          className="text-green-500 stroke-current"
+          strokeWidth="3"
+          fill="none"
+          d="
+            M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831
+          "
+          strokeDasharray={`${data.duedegi}, 100`}
+        />
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white">
+        {data.duedegi}%
       </div>
     </div>
+    <span className="text-xs bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full">In Progress</span>
+  </div>
+  <p className="text-xs text-gray-400 mt-2">Due Diligence Status</p>
+</div>
+
         </React.Fragment>
       ))
+ 
     ) : (
       <div className="text-gray-500 text-center mx-auto py-10 text-center text-lg font-medium">
         No Data Found
