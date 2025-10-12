@@ -24,7 +24,7 @@ const Footer = async () => {
     footerData = result;
   } catch (error) {
     console.error(error);
-    return <div className="text-white text-center mt-10">Failed to load blog post.</div>;
+    return <div className="text-white text-center mt-10">Failed to load.</div>;
   }
 
   if(footerData){
