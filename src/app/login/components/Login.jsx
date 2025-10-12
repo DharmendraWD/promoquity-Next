@@ -145,6 +145,9 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+const BASE_API = process.env.NEXT_PUBLIC_BASE_API || '';
+
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -160,7 +163,7 @@ const handleSubmit = async (e) => {
     setError('');
 
     try {
-      const res = await fetch('http://www.taskperfect.somee.com/api/User/login', {
+      const res = await fetch(`${BASE_API}/User/login`, {
         method: 'POST',
         body: JSON.stringify(credentials),
         headers: {
@@ -194,10 +197,13 @@ dispatch(setAuth({ token:data.data.token, userId: data.data.userId }));
 
   const isAuth = useSelector((state) => state.isAuth);
 
-  console.log(isAuth)
+  // console.log(isAuth)
   return (
-    <form className="mx-auto rounded-2xl p-6 md:p-10 w-full max-w-md" onSubmit={handleSubmit}>
+    <>
       {isLoading && <Loading />}
+      {
+        !isLoading && 
+         <form className="mx-auto rounded-2xl p-6 md:p-10 w-full max-w-md" onSubmit={handleSubmit}>
 
       <h2 className="text-white text-2xl md:text-3xl font-semibold text-center mb-2">
         Sign In Your Account
@@ -258,6 +264,9 @@ dispatch(setAuth({ token:data.data.token, userId: data.data.userId }));
 
       {error && <p className="text-red-500 text-sm mt-4 text-center">{error}</p>}
     </form>
+      }
+   
+    </>
   );
 };
 
