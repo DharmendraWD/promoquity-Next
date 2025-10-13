@@ -12,7 +12,7 @@ import assets from '../../../../public/img/assets.png'
 import profit from '../../../../public/img/profit.png'
 import warn from '../../../../public/img/warn.png'
 import Image from "next/image";
-import Loading from "@/components/Loading/Loadingk";
+import Loading from "@/components/Loading/Loading";
 import KpiDescDests from "./KpiDescDests";
 
 

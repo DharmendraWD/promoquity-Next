@@ -1,4 +1,4 @@
-import Loading from '@/components/Loading/Loadingk';
+
 import noImg from '../../../../public/img/noImage.png';
 import HeadingL from '@/components/utilities/HeadingL';
 import Image from 'next/image';
