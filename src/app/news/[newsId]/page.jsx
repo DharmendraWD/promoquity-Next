@@ -1,4 +1,3 @@
-import Loading from "@/components/Loading/Loadingk";
 import ConvertHTML from "@/components/utilities/cards/ConvertHTML";
 import Image from "next/image";
 import img from "../../../../public/img/noImage.png";
@@ -39,7 +38,7 @@ const { params } = props;
     }
 
 {
-    isLoading && (<Loading />);
+    isLoading && (<h1>Loading</h1>);
 }
 
   return (
