@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: '3.27.120.54',
       },
+        {
+        protocol: 'https',
+        hostname: 'api.promoquity.com.np',
+      },
     ],
   },
 };

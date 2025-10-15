@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import Slider from "./slider/Slider"
 
 import dollarImg from '../../../../public/img/dollar.png'
 import up from '../../../../public/img/up.png'
@@ -162,6 +162,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
         ))}
       </div>
 
+<Slider></Slider>
       {/* Show loading indicator */}
       {loading && <div className="flex justify-center items-center min-w-full min-h-[100vh]">
         <Loading></Loading>
@@ -275,9 +276,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
               <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">Dividend Yield</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
                   <p className="text-sm flex gap-4 text-[#4bf187]">+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
                 </div>
               </div>
             </div>
@@ -292,9 +293,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
               <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">EBITDA</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
                   <p className="text-sm flex gap-4 text-[#f23e60]">+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
                 </div>
               </div>
             </div>
@@ -328,9 +329,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
                <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
               </div>
             <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
               <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
         </div>
       </div>
@@ -346,9 +347,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
                <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
               </div>
             <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
               <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
         </div>
       </div>
@@ -381,9 +382,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
                <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
               </div>
             <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
               <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
         </div>
       </div>
@@ -399,9 +400,9 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
                <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
               </div>
             <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
               <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
         </div>
       </div>
