@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import Slider from "./slider/Slider"
 
 import dollarImg from '../../../../public/img/dollar.png'
 import up from '../../../../public/img/up.png'
@@ -182,6 +182,7 @@ if(value === "Low"){
         ))}
       </div>
 
+<Slider></Slider>
       {/* Show loading indicator */}
       {loading && <div className="flex justify-center items-center min-w-full min-h-[100vh]">
         <Loading></Loading>
@@ -295,9 +296,9 @@ if(value === "Low"){
               <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">Dividend Yield</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
                   <p className="text-sm flex gap-4 text-[#4bf187]">+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
                 </div>
               </div>
             </div>
@@ -312,9 +313,9 @@ if(value === "Low"){
               <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
                 <p className="text-sm font-semibold text-[#a2a2a2]">EBITDA</p>
                 <div className="flex items-center gap-2 mt-1 text-sm font-medium text-green-600">
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
                   <p className="text-sm flex gap-4 text-[#f23e60]">+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
                 </div>
               </div>
             </div>
@@ -348,9 +349,9 @@ if(value === "Low"){
                <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
               </div>
             <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
               <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
         </div>
       </div>
@@ -366,9 +367,9 @@ if(value === "Low"){
                <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
               </div>
             <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-                  <img src={warn} alt="" />
+                  <Image width={100} height={100} src={warn} alt="" />
               <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
-                  <img src={down} alt="" />
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
         </div>
       </div>
@@ -394,53 +395,34 @@ if(value === "Low"){
       market.data.items.map((data, index) => (
       
         <React.Fragment key={index}>
-         {/* Beta */}
-        <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20" key={"1101"}>
-          <div className="flex justify-between items-center mb-1">
-            <p className="text-sm text-gray-300">Beta</p>
-            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">Stable</span>
-          </div>
-          <p className="text-2xl font-semibold">{data?.beta}</p>
-          <p className="text-xs text-gray-400 mt-1">Volatility vs Market</p>
-        </div>
-
-        {/* Market Cap */}
-      <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20" key={"1102"}>
-      <div className="flex justify-between items-center mb-1 flex-col md:flex-row">
-        <p className="text-sm text-gray-300">Market Cap</p>
-        <div className="flex gap-1 flex-col md:flex-row">
-          {capOptions.map((cap) => (
-            <span
-              key={cap}
-              onClick={() => handleClickMarketKpi(cap)}
-              className={`cursor-pointer text-xs px-2 py-0.5 rounded-full transition
-                ${
-                  selectedCap === cap
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                }
-              `}
-            >
-              {cap}
-            </span>
-          ))}
+        {/* 1st card  */}
+    <div key={"1006"} className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
+      <div className="flex justify-between items-center mb-2">    
+        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
+              <div>
+               <p className='text-sm font-semibold text-[#a2a2a2]'> Operating Margin</p>
+              </div>
+            <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
+                  <Image width={100} height={100} src={warn} alt="" />
+              <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
+                  <Image width={100} height={100} src={down} alt="" />
+            </div>
         </div>
       </div>
       <p className="text-2xl font-semibold">Rs: {marketCApValue}</p>
       <p className="text-xs text-gray-400 mt-1">{selectedCap}</p>
     </div>
-
-        {/* Production Output */}
-        <div className="bg-white/5 w-full p-4 rounded-xl border border-dashed border-white/20"  key={"1103"}>
-          <p className="text-sm text-gray-300 mb-1">Production Output</p>
-          <div className="flex justify-between flex-col md:flex-row">
-            <div>
-              <p className="text-xs text-gray-400">Retail Sales</p>
-              <p className="text-lg font-semibold text-green-400">250K</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400">Active Users</p>
-              <p className="text-lg font-semibold text-blue-400">18.2M</p>
+    {/* 2nd card */}
+    <div key={"1005"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
+      <div className="flex justify-between items-center mb-2">    
+        <div className='flex flex-col md:flex-row justify-between w-full items-center gap-2'>
+              <div>
+               <p className='text-sm font-semibold text-[#a2a2a2]'>Inventory Turnover</p>
+              </div>
+            <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
+                  <Image width={100} height={100} src={warn} alt="" />
+              <p className='text-sm flex gap-4 text-[#f23e60]'>+12.4%</p>
+                  <Image width={100} height={100} src={down} alt="" />
             </div>
           </div>
         </div>
