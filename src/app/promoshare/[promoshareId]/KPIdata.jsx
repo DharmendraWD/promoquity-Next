@@ -204,11 +204,11 @@
 //           <div key={"819"} className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 rounded-xl shadow-lg w-full">
 //       <div className="flex justify-between items-center mb-2">
 //         <p className="text-2xl text-white font-semibold">RS: {data?.eps}</p>
-//         <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={dollarImg} alt="" className="bg-white w-[30px] p-2 rounded-full text-white text-lg"/>
+//         <Image width={50} height={50}   src={dollarImg} alt="" className="bg-white w-[30px] p-2 rounded-full text-white text-lg"/>
 //       </div>
 //         <p className="text-sm text-[#a2a2a2] font-semibold">Earning Per Share</p>
 //       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[grey] mt-2'>
-//           <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={up} alt="" />
+//           <Image width={50} height={50}   src={up} alt="" />
 //           <p className='text-sm text-[#4bf187]'>+12.4%</p>
 //       </div>
 //     </div>
@@ -216,11 +216,11 @@
 //       <div key={"11"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
 //       <div className="flex justify-between items-center mb-2">
 //         <p className="text-2xl font-semibold text-white"> {data?.peRatio}</p>
-//         <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={percentage} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+//         <Image width={50} height={50}   src={percentage} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
 //       </div>
 //         <p className="text-sm font-semibold text-[#a2a2a2]">P/E Ratio:</p>
 //       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-//           <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={up} alt="" />
+//           <Image width={50} height={50}   src={up} alt="" />
 //           <p className='text-sm text-[#4bf187]'>+12.4%</p>
 //       </div>
 //     </div>
@@ -228,11 +228,11 @@
 //       <div key={"22"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
 //       <div className="flex justify-between items-center mb-2">
 //         <p className="text-2xl font-semibold text-white"> {data?.roe}</p>
-//         <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={chart} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+//         <Image width={50} height={50}   src={chart} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
 //       </div>
 //         <p className="text-sm font-semibold text-[#a2a2a2]">Return on Equity:</p>
 //       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-//           <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={down} alt="" />
+//           <Image width={50} height={50}   src={down} alt="" />
 //           <p className='text-sm text-[#4bf187]'>+12.4%</p>
 //       </div>
 //     </div>
@@ -240,11 +240,11 @@
 //       <div key={"233"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
 //       <div className="flex justify-between items-center mb-2">
 //         <p className="text-2xl font-semibold text-white"> {data?.roa}</p>
-//         <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={assets} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+//         <Image width={50} height={50}   src={assets} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
 //       </div>
 //         <p className="text-sm font-semibold text-[#a2a2a2]">Return on Assets:</p>
 //       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-//           <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={up} alt="" />
+//           <Image width={50} height={50}   src={up} alt="" />
 //           <p className='text-sm text-[#4bf187]'>+12.4%</p>
 //       </div>
 //     </div>
@@ -252,11 +252,11 @@
 //       <div key={"3423"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
 //       <div className="flex justify-between items-center mb-2">
 //         <p className="text-2xl font-semibold text-white"> {data?.netProfitMargin}</p>
-//         <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={profit} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+//         <Image width={50} height={50}   src={profit} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
 //       </div>
 //         <p className="text-sm font-semibold text-[#a2a2a2]">Net Profit Margin:</p>
 //       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-//           <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={down} alt="" />
+//           <Image width={50} height={50}   src={down} alt="" />
 //           <p className='text-sm text-[#4bf187]'>+12.4%</p>
 //       </div>
 //     </div>
@@ -687,11 +687,11 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
           <div key={"819"} className="bg-white/5 rounded-xl border border-dashed border-white/20 p-5 rounded-xl shadow-lg w-full">
       <div className="flex justify-between items-center mb-2">
         <p className="text-2xl text-white font-semibold">RS: {data?.eps}</p>
-        <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={dollarImg} alt="" className="bg-white w-[30px] p-2 rounded-full text-white text-lg"/>
+        <Image width={50} height={50}   src={dollarImg} alt="" className="bg-white w-[30px] p-2 rounded-full text-white text-lg"/>
       </div>
         <p className="text-sm text-[#a2a2a2] font-semibold">Earning Per Share</p>
       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[grey] mt-2'>
-          <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={up} alt="" className="w-[15px]" />
+          <Image width={50} height={50}   src={up} alt="" className="w-[15px]" />
           <p className='text-sm text-[#4bf187]'>+12.4%</p>
       </div>
     </div>
@@ -699,11 +699,11 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
       <div key={"11"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">
         <p className="text-2xl font-semibold text-white"> {data?.peRatio}</p>
-        <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={percentage} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+        <Image width={50} height={50}   src={percentage} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
       </div>
         <p className="text-sm font-semibold text-[#a2a2a2]">P/E Ratio:</p>
       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-          <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={up} className="w-[15px]" alt="" />
+          <Image width={50} height={50}   src={up} className="w-[15px]" alt="" />
           <p className='text-sm text-[#4bf187]'>+12.4%</p>
       </div>
     </div>
@@ -711,11 +711,11 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
       <div key={"22"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">
         <p className="text-2xl font-semibold text-white"> {data?.roe}</p>
-        <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={chart} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+        <Image width={50} height={50}   src={chart} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
       </div>
         <p className="text-sm font-semibold text-[#a2a2a2]">Return on Equity:</p>
       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-          <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" className="w-[15px]" src={down} alt="" />
+          <Image width={50} height={50}   className="w-[15px]" src={down} alt="" />
           <p className='text-sm text-[#4bf187]'>+12.4%</p>
       </div>
     </div>
@@ -723,11 +723,11 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
       <div key={"233"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">
         <p className="text-2xl font-semibold text-white"> {data?.roa}</p>
-        <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={assets} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+        <Image width={50} height={50}   src={assets} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
       </div>
         <p className="text-sm font-semibold text-[#a2a2a2]">Return on Assets:</p>
       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
-          <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" className="w-[15px]" src={up} alt="" />
+          <Image width={50} height={50}   className="w-[15px]" src={up} alt="" />
           <p className='text-sm text-[#4bf187]'>+12.4%</p>
       </div>
     </div>
@@ -735,7 +735,7 @@ const KPIdata = ({ promoshareId, rem1, rem2, rem3 }) => {
       <div key={"3423"} className="bg-[white] p-5 rounded-xl shadow-lg w-full bg-white/5 rounded-xl border border-dashed border-white/20">
       <div className="flex justify-between items-center mb-2">
         <p className="text-2xl font-semibold text-white"> {data?.netProfitMargin}</p>
-        <Image width={50} height={50}  className="w-[30px]"  className="w-[30px]"  className="w-[30px]" src={profit} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
+        <Image width={50} height={50}   src={profit} alt="" className="bg-white  p-2 rounded-full text-white text-lg w-[30px]"/>
       </div>
         <p className="text-sm font-semibold text-[#a2a2a2]">Net Profit Margin:</p>
       <div className='flex items-center gap-2 mt-1 text-sm font-medium text-[#4bf187] mt-2'>
