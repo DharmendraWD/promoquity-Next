@@ -13,7 +13,6 @@ const BASE_API = process.env.NEXT_PUBLIC_BASE_API || 'http://www.taskperfect.som
 
 const fetchDownloads = async (page, limit = 10) => {
   const res = await fetch(`${BASE_API}/DownloadFiles/GetPagedDownloadList?pageIndex=${page}&pageSize=${limit}&companyId=0`, {
-    cache: 'no-store',
   });
 
   if (!res.ok) throw new Error('Failed to fetch downloads');
