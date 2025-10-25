@@ -5,7 +5,6 @@ import LoggedInHome from './LoggedInHome'; // Client Component
 import ClientAuthWrapper from './ClientAuthWrapper/ClientAuthWrapper'; // NEW
 
 export default async function Page() {
-  console.log("first")
     const response = await fetch(`${process.env.BASE_API}/HomeContent/GetPagedHomeContentList?pageIndex=1&pageSize=10`, {
   });
 
