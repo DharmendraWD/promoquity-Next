@@ -2,9 +2,9 @@
 import { cookies } from 'next/headers';
 import Protected from '@/app/protected/page';
 
-export default function ClientAuthWrapper({ fallback }) {
+export default async function ClientAuthWrapper({ fallback }) {
   // Get cookies from request headers (server side)
-  const cookieStore = cookies();
+  const cookieStore = await cookies(); 
   const token = cookieStore.get('token')?.value;  // Adjust 'token' to your actual cookie name
 
   if (!token) {

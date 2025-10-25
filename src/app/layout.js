@@ -20,9 +20,12 @@ export const metadata = {
   description: "Promoquity - Your gateway to growth",
 };
 
-export default function RootLayout({ children }) {
-    const cookieStore = cookies(); //  server-side cookies
-  const token = cookieStore.get("token")?.value || null; // or whatever your token name is
+export default async function RootLayout({ children }) {
+
+    const cookieStore = await cookies(); 
+  const token = cookieStore.get("token")?.value || null; 
+
+
   return (
     <html lang="en">
       <body

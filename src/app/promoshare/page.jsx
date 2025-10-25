@@ -23,7 +23,7 @@ async function getCompanies(page) {
 }
 
 export default async function PromoSharePage({ searchParams }) {
-  const currentPage = parseInt(searchParams?.page || '1', 10);
+const currentPage = parseInt((await searchParams)?.page || '1', 10);
 
   let companyData;
   try {
