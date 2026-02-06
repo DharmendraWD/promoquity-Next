@@ -55,6 +55,7 @@ let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
   }, []);
 
   const totalItems = items?.length;
+  console.log(items)
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
@@ -81,7 +82,7 @@ let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
 
 
   return (
-    <section className="text-white mt-[150px]">
+    <section className="text-white mt-[150px] max-w-[1440px] mx-auto">
       <div className="container mx-auto ">
         <div className="text-center mb-10">
                  <HeadingL label={"Our Products"} />
@@ -119,7 +120,7 @@ let BASE_CONTENT = process.env.NEXT_PUBLIC_BASE_CONTENT;
                 style={{ width: `${100 / itemsToShow}%` }}
               >
                 <div className=" rounded-[20px] overflow-hidden ">
-                  <Image width={300} height={300} alt='user' src={noImage} className="w-full h-40 object-cover" />
+                  <Image width={300} height={300} alt='Product' unoptimized src={item?.imageUrl ? BASE_CONTENT + item?.imageUrl : noImage} className="w-full h-40 object-cover" />
                   {/* <Image width={0} height={0} alt='user' src={BASE_CONTENT + item?.imageUrl} className="w-full h-40 object-cover" /> */}
 
                 </div>

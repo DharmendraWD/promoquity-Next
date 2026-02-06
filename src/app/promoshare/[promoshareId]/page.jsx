@@ -31,6 +31,7 @@ const { params } = props;
 // ------------------Single COmpany Data --------------
 
 
+console.log(singleCompanyProfile?.data)
 
 
     return (
@@ -39,7 +40,7 @@ const { params } = props;
       <div className="flex justify-between flex-col md:flex-row gap-[20px] md:gap-[auto] items-center mb-6">
         <div className="flex items-center space-x-4 md:justify-start w-full md:w-auto justify-between">
           {/* <img src={singleCompanyProfile?.data?.imageUrl ? `${BASE_CONTENT}${singleCompanyProfile?.data?.imageUrl}` : noImg} alt="Company Logo" className="h-16 w-16 rounded-full" /> */}
-          <Image width={0} height={0} src={ noImg} alt="Company Logo" className="h-16 w-16 rounded-full" />
+          <Image width={0} height={0} unoptimized src={ singleCompanyProfile?.data?.imageUrl ? `${BASE_CONTENT}${singleCompanyProfile?.data?.imageUrl}` : noImg} alt="Company Logo" className="h-16 w-16 rounded-full" />
           <div>
           <HeadingL label={singleCompanyProfile?.data?.companyName || "Company Name"}></HeadingL>
             <div className="text-sm text-gray-400 flex gap-2 md:gap-8 flex flex-col md:flex-row ">

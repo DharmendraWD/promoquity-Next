@@ -3,22 +3,32 @@
 import React, { use, useEffect, useState } from 'react'
 import { FaBars, FaChevronDown, FaTimes } from 'react-icons/fa';
 import { useRouter } from 'next/navigation'; 
-import { useDispatch, useSelector } from 'react-redux';
-import { setAuth } from '@/store/slices/Login/isAuth';
-import { userDets } from '@/store/slices/user/userDet';
 
 
 
-function NavProfile() {
+function NavProfile({token}) {
+const router = useRouter();
 
     const [submenuOpen, setSubmenuOpen] = useState('');
     const [showLogoutModal, setShowLogoutModal] = useState(false);
-          const router = useRouter();
+    const [loggedInuserDets, setLoggedInuserDets] = useState({
+      address: null,
+      createdBy: null,
+      createdDate: null,
+      dob: null,
+      email: null,
+      firstName: null,
+      gender: null,
+      id: null,
+      lastName: null,
+      middleName: null,
+      mobileNo: null,
+      modifiedBy: null,
+      modifiedDate: null,
+      tenantId: null,
+      userName: null,
+    })
 
-    const token = useSelector((state) => state.isAuth.token);
-    const useId = useSelector((state) => state.isAuth.userId);
-
-          const dispatch = useDispatch();
 
 
     
@@ -28,7 +38,6 @@ function NavProfile() {
   
 
     const handleLogoutConfirm = () => {
-      dispatch(setAuth({ token:"", userId:"" }));
 
         document.cookie = 'token=; path=/; max-age=0';
     document.cookie = 'userId=; path=/; max-age=0';
@@ -38,11 +47,44 @@ function NavProfile() {
       window.location.reload();
 
       };
-// -----------get user profiele data 
-const userData = useSelector((state) => state?.userData?.userData);
-// const loading = useSelector((state) => state?.userData?.loading);
+      const getCookie = (name) => {
+        // Check if we are in the browser
+        if (typeof document === 'undefined') return null; 
+        
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      };
+      // Usage:
+      // const tokenn = getCookie('token');
+      const userId = getCookie('userId')
+      
+      
+      // -----------get user profiele data 
+const getLoggedInUserDets = async () => {
+      try {
+      // console.log(userID)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/User/userprofile?userCode=${userId}`, {
+      });
+
+      const data = await res.json();
+      setLoggedInuserDets(data?.data);
+
+      if (!res.ok) {
+        return rejectWithValue(data.message || 'Login failed');
+      }
+
+      return data;
+    } catch (err) {
+      return (err.message || 'Network error');
+    }
+}
+
 useEffect(() => {
-dispatch(userDets(useId));
+  if (token) {
+    getLoggedInUserDets();
+  }
 }, [])
 
 
@@ -51,7 +93,7 @@ dispatch(userDets(useId));
   
        <div className="flex space-x-4 items-center">
           {
- token &&         
+ token && loggedInuserDets  &&   
        <div className="relative group inline-block">
   {/* Trigger area */}
   <div className="cursor-pointer">
@@ -61,7 +103,8 @@ dispatch(userDets(useId));
       alt=""
     />
     <button className="text-[white]  md:flex hidden text-[14px] hover:text-indigo-600 items-center gap-1">
-     Hi, {userData?.firstName || ''}
+     Hi,
+      {loggedInuserDets?.firstName || ''}
       <FaChevronDown size={9} />
     </button>
   </div>
@@ -90,7 +133,7 @@ dispatch(userDets(useId));
             </div>
             {/* Logout Modal */}
       {showLogoutModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-[#000000c2] bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-sm animate-fade-in">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">Confirm Logout</h2>
             <p className="text-gray-600 mb-6">Are you sure you want to logout?</p>
@@ -117,18 +160,3 @@ dispatch(userDets(useId));
 
 export default NavProfile
 
-// "use client";
-// import React from 'react'
-// import { useSelector, useDispatch } from 'react-redux';
-
-// const NavProfile = () => {
-//     const token = useSelector((state) => state.isAuth.token);
-//     const useId = useSelector((state) => state.isAuth.userId);
-  
-//     console.log(useId)
-//   return (
-//     <div >NavProfile Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque tempora doloremque obcaecati maxime suscipit officia molestias facere praes</div>
-//   )
-// }
-
-// export default NavProfile

@@ -5,14 +5,15 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import Link from 'next/link';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/app/loading';
+
 
 
 const Login = () => {
   const router = useRouter();
 
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('admin@123');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -25,49 +26,55 @@ const BASE_API = process.env.NEXT_PUBLIC_BASE_API || '';
   };
 
 const handleSubmit = async (e) => {
-    e.preventDefault();
-    const credentials = {
-      userName: username,
-      password: password,
-    };
+  e.preventDefault();
+  const credentials = { userName: username, password: password };
 
-    setIsLoading(true);
-    setError('');
+  setIsLoading(true);
+  setError('');
 
-    try {
-      const res = await fetch(`${BASE_API}/User/login`, {
-        method: 'POST',
-        body: JSON.stringify(credentials),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+  try {
+    const res = await fetch(`${BASE_API}/User/login`, {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-      const data = await res.json();
+    const result = await res.json();
 
-      if (res.ok && data?.data?.token) {
-        // Set cookies
-        document.cookie = `token=${data.data.token}; path=/`;
-        document.cookie = `userId=${data.data.userId}; path=/`;
+    if (res.ok && result?.data?.token) {
+      // 1. Extract into local variables
+      const receivedToken = result.data.token;
+      const receivedUserId = result.data.userId;
 
+      // 2. Set Cookies (Standard way)
+      document.cookie = `token=${receivedToken}; path=/; SameSite=Lax`;
+      document.cookie = `userId=${receivedUserId}; path=/; SameSite=Lax`;
 
-        // Dispatch custom event to notify other components
-        window.dispatchEvent(new Event('login-success'));
+      // 3. Optional: Store in LocalStorage if you need them 
+      // outside of the cookie string for easier JS access
+      localStorage.setItem('user_id', receivedUserId);
 
-        // Redirect to home
-        router.push('/');
-      } else {
-        setError(data.message || 'Login failed');
-      }
-    } catch (err) {
-      setError('Network error');
+      // 4. Dispatch event with the data attached
+      window.dispatchEvent(new CustomEvent('login-success', { 
+        detail: { token: receivedToken, userId: receivedUserId } 
+      }));
+
+      router.push('/');
+    } else {
+      setError(result.message || 'Login failed');
     }
-
+  } catch (err) {
+    setError('Network error');
+  } finally {
     setIsLoading(false);
-  };
+  }
+};
   return (
     <>
-      {isLoading && <Loading />}
+  {
+    isLoading && <Loading />
+  }
+
       {
         !isLoading && 
          <form className="mx-auto rounded-2xl p-6 md:p-10 w-full max-w-md" onSubmit={handleSubmit}>

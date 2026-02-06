@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar/Navbar";
 // import StoreProvider from "@/store/StoreProvider";
 import Footer from "@/components/utilities/footer/Footer";
 import { cookies } from "next/headers"; //  <-- server-side cookie access
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

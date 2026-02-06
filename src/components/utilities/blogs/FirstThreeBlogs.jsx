@@ -49,7 +49,7 @@ let firstBlogDesc= blogItems?.[0]?.blogDesc;
       <HeadingL label="Market and Insights Concepts" />
       <Para label="Market and Insights Concepts involve analyzing trends, consumer behavior, and data to guide strategic business decisions and uncover growth opportunities." />
       <div className=" text-white flex-col  font-sans flex items-start justify-center px-[10px] lg:px-[0px]">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 w-full px-[11px]">
         {/* Large Card */}
 
         {blogItems && (

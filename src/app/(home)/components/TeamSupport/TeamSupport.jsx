@@ -20,7 +20,7 @@ export default async function TeamSupport() {
   if (!item) return null;
 
   return (
-    <div className="flex xl:flex-row flex-col w-auto lg:w-[1182px] mx-auto justify-between items-center gap-[85px]">
+    <div className="flex xl:flex-row max-w-[100%] flex-col w-auto lg:w-[1182px] mx-auto justify-between items-center gap-[85px]">
       {/* Images */}
       <div className="w-[90%] lg:w-[500px] relative h-[456px] shrink-0">
         <div className="lg:w-[222px] w-[40%] h-[50%] teamSuppImageParent absolute top-0 left-[32px]">

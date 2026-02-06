@@ -162,6 +162,7 @@ backdrop-filter: blur(14px);
 }
 .allCards{
   transition: .3s ease-in-out;
+  height: fit-content;
 
 }
 .allCards:hover{

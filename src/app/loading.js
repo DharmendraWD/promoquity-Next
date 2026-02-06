@@ -1,3 +1,5 @@
+
+"use client"
 import React from 'react'
 import loadingGIF from "../../public/img/promoquityArow.gif"
 import Image from 'next/image'

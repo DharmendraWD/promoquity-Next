@@ -43,10 +43,10 @@ const Footer = async () => {
           ]
 
   return (
-    <footer className="text-white max-w-[1440px] mx-auto mt-16 border-t-2 border-white/10 px-4 md:px-0 pb-16  left-0 right-0 bottom-0">
+    <footer className="text-white px-4  max-w-[1440px] mx-auto mt-16 border-t-2 border-white/10 pb-16  left-0 right-0 bottom-0">
                <Image width={0} height={0} src={footerImg} alt="" className='absolute z-[-1] top-0 left-0 w-[100%] opacity-[30%] h-full'/>
 
-      <div className="container grid grid-cols-1 md:grid-cols-3 max-w-full gap-8  lg:pl-[0px] lg:grid-cols-[1.5fr_2fr]">
+      <div className="container grid grid-cols-1 lg:grid-cols-3 max-w-full gap-8  lg:pl-[0px] lg:grid-cols-[1.5fr_2fr]">
         {/* Left Section: Logo, Text, and Social Icons */}
         <div className="">
           <div className="flex items-center mb-4">
